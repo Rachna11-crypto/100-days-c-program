@@ -1,0 +1,62 @@
+Find the second largest element in an array.
+#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int n, i;
+    int largest = INT_MIN;
+    int second = INT_MIN;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    for (i = 0; i < n; i++) {
+        if (a[i] > largest) {
+            second = largest;
+            largest = a[i];
+        }
+        else if (a[i] > second && a[i] != largest) {
+            second = a[i];
+        }
+    }
+
+    printf("%d", second);
+
+    return 0;
+}
+
+Rotate an array to the right by k positions.
+#include <stdio.h>
+
+int main() {
+    int n, k, i, j, temp;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    scanf("%d", &k);
+
+    k = k % n;
+
+    for (i = 0; i < k; i++) {
+        temp = a[n - 1];
+
+        for (j = n - 1; j > 0; j--)
+            a[j] = a[j - 1];
+
+        a[0] = temp;
+    }
+
+    for (i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
